@@ -8,6 +8,8 @@
 ##使用方法
 你可以像使用Eigen一样使用它，比如：
 ```cpp
+#include <iostream>
+#include "Math_Header.h"
 MatrixXf m(3,3);
 m << 1,2,3,
     4,5,6,
