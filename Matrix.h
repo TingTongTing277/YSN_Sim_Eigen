@@ -1,7 +1,7 @@
 /*
  * Matrix.h
  *
- *  Created on: 2023å¹´4æœˆ9æ—¥
+ *  Created on: 2023Äê4ÔÂ9ÈÕ
  *      Author: fuzic
  */
 #pragma once
@@ -9,7 +9,7 @@
 #define MATH_MATRIX_H_
 
 //#include "Math_Header.h"
-#include <stdexcept>  // æ·»åŠ å¼‚å¸¸å¤„ç†
+#include <stdexcept>  // Ìí¼ÓÒì³£´¦Àí
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -29,7 +29,7 @@ namespace Sim_Eigen {
         int column;
         Scalar* matrix;
 
-        // é€—å·åˆå§‹åŒ–å™¨å®ç°
+        // ¶ººÅ³õÊ¼»¯Æ÷ÊµÏÖ
         template<typename, typename> friend class CommaInitializer;
 
         template<typename Derived, typename Scalar2>
@@ -40,7 +40,7 @@ namespace Sim_Eigen {
         public:
             CommaInitializer(Derived& mat, Scalar2 first_val) : matrix_(mat), index_(0) {
                 expectedSize_ = mat.rows() * mat.cols();
-                *this, first_val;  // å¤„ç†ç¬¬ä¸€ä¸ªå€¼
+                *this, first_val;  // ´¦ÀíµÚÒ»¸öÖµ
             }
 
             CommaInitializer& operator,(Scalar2 value) {
@@ -61,7 +61,7 @@ namespace Sim_Eigen {
             }
         };
     public:
-        Matrix(int x, int y) :row(x), column(y)//çŸ©é˜µå®šä¹‰
+        Matrix(int x, int y) :row(x), column(y)//¾ØÕó¶¨Òå
         {
             if (x > 0 && y > 0) {
                 matrix = new Scalar[row * column];
@@ -71,13 +71,13 @@ namespace Sim_Eigen {
                 matrix = nullptr;
             }
         }
-        Matrix(Matrix& other) :row(other.row), column(other.column)//æ‹·è´æ„é€ å‡½æ•°
+        Matrix(Matrix& other) :row(other.row), column(other.column)//¿½±´¹¹Ôìº¯Êı
         {
             matrix = new Scalar[row * column];
             std::copy(other.matrix, other.matrix + row * column, matrix);
         }
 
-        // ç§»åŠ¨æ„é€ å‡½æ•°
+        // ÒÆ¶¯¹¹Ôìº¯Êı
         Matrix(Matrix&& other) noexcept : row(other.row), column(other.column), matrix(other.matrix){//, mp(other.mp) {
             other.matrix = nullptr;
             other.row = 0;
@@ -90,46 +90,46 @@ namespace Sim_Eigen {
         }
 
     public:
-        // Eigen é£æ ¼æ¥å£
+        // Eigen ·ç¸ñ½Ó¿Ú
         int rows() const { return row; }
         int cols() const { return column; }
         Scalar* data() { return matrix; }
         const Scalar* data() const { return matrix; }
 
-        // æ·»åŠ å‹å…ƒå£°æ˜
+        // Ìí¼ÓÓÑÔªÉùÃ÷
         friend std::ostream& operator<<(std::ostream& os, const Matrix<Scalar>& mat) {
-            // ä¿å­˜åŸæœ‰æ ¼å¼çŠ¶æ€
+            // ±£´æÔ­ÓĞ¸ñÊ½×´Ì¬
             std::ios_base::fmtflags origFlags = os.flags();
             std::streamsize origPrecision = os.precision();
             std::streamsize origWidth = os.width();
 
-            // è®¾ç½®è¾“å‡ºæ ¼å¼ï¼ˆç¤ºä¾‹ï¼šå›ºå®šå°æ•°ç‚¹ï¼Œ4ä½ç²¾åº¦ï¼‰
+            // ÉèÖÃÊä³ö¸ñÊ½£¨Ê¾Àı£º¹Ì¶¨Ğ¡Êıµã£¬4Î»¾«¶È£©
             os << std::fixed << std::setprecision(4);
 
             for (int i = 0; i < mat.rows(); ++i) {
                 for (int j = 0; j < mat.cols(); ++j) {
                     os << mat(i, j);
-                    if (j != mat.cols() - 1) os << "\t";  // å…ƒç´ é—´ç”¨ç©ºæ ¼åˆ†éš”
+                    if (j != mat.cols() - 1) os << "\t";  // ÔªËØ¼äÓÃ¿Õ¸ñ·Ö¸ô
                 }
-                if (i != mat.rows() - 1) os << std::endl;  // è¡Œæœ«æ¢è¡Œ
+                if (i != mat.rows() - 1) os << std::endl;  // ĞĞÄ©»»ĞĞ
             }
-            os << std::endl; // è¡Œæœ«æ¢è¡Œ
+            os << std::endl; // ĞĞÄ©»»ĞĞ
 
-            // æ¢å¤åŸæœ‰æ ¼å¼
+            // »Ö¸´Ô­ÓĞ¸ñÊ½
             os.flags(origFlags);
             os.precision(origPrecision);
             os.width(origWidth);
             return os;
         }
 
-        // è¿ç®—ç¬¦é‡è½½
-        // æµå¼åˆå§‹åŒ–è¿ç®—ç¬¦
+        // ÔËËã·ûÖØÔØ
+        // Á÷Ê½³õÊ¼»¯ÔËËã·û
         CommaInitializer<Matrix<Scalar>, Scalar> operator<<(Scalar value) {
             if (!matrix) throw std::runtime_error("Matrix not initialized");
             return CommaInitializer<Matrix<Scalar>, Scalar>(*this, value);
         }
 
-        //æ‹¬å·é‡è½½
+        //À¨ºÅÖØÔØ
         inline Scalar& operator()(int rows, int cols) {
             if (rows >= row || cols >= column || rows < 0 || cols < 0) {
                 throw std::invalid_argument("Matrix element access is illegal");
@@ -217,7 +217,7 @@ namespace Sim_Eigen {
             }
             return r;
         }
-        //å¯¹å‘é‡ä¹˜æ³•
+        //¶ÔÏòÁ¿³Ë·¨
         Matrix<Scalar> operator * (const Vector3<Scalar>& vector) const
         {
             if (column != 3) {
@@ -262,7 +262,7 @@ namespace Sim_Eigen {
             // }
             // return *this;
             if (this != &m) {
-                if (row != m.rows() || column != m.cols())//çŸ©é˜µå°ºå¯¸ä¸ä¸€è‡´ï¼Œé‡æ–°ä¿®æ”¹å¤§å°
+                if (row != m.rows() || column != m.cols())//¾ØÕó³ß´ç²»Ò»ÖÂ£¬ÖØĞÂĞŞ¸Ä´óĞ¡
                 {
                     delete[] matrix;
                     row = m.row;
@@ -274,12 +274,12 @@ namespace Sim_Eigen {
             return *this;
         }
 
-        //ç”¨äºæå–å…¶ä»–çŸ©é˜µçš„åˆ†å—çŸ©é˜µ
+        //ÓÃÓÚÌáÈ¡ÆäËû¾ØÕóµÄ·Ö¿é¾ØÕó
         Matrix<Scalar>& operator = (const Block<Scalar>& m)
         {
             if (this == m.getParent())
                 throw std::runtime_error("Block can not assign parent Matrix");
-            if (row != m.rows() || column != m.cols())//çŸ©é˜µå°ºå¯¸ä¸ä¸€è‡´ï¼Œé‡æ–°ä¿®æ”¹å¤§å°
+            if (row != m.rows() || column != m.cols())//¾ØÕó³ß´ç²»Ò»ÖÂ£¬ÖØĞÂĞŞ¸Ä´óĞ¡
             {
                 delete[] matrix;
                 row = m.rows();
@@ -293,7 +293,7 @@ namespace Sim_Eigen {
             return *this;
         }
 
-        //ç”¨äºæå–vector
+        //ÓÃÓÚÌáÈ¡vector
         Matrix<Scalar>& operator = (const Vector3<Scalar>& vector)
         {
             (*this) = vector.toColVector();
@@ -312,7 +312,7 @@ namespace Sim_Eigen {
         //     return matrix;
         // }
     public:
-        void resize(int x, int y) //é‡å»ºçŸ©é˜µ
+        void resize(int x, int y) //ÖØ½¨¾ØÕó
         {
             // delete[] mp;
             delete[] matrix;
@@ -326,19 +326,19 @@ namespace Sim_Eigen {
             setZero();
         }
 
-        void setZero(void)//çŸ©é˜µæ¸…é›¶
+        void setZero(void)//¾ØÕóÇåÁã
         {
             std::fill(matrix, matrix + row * column, Scalar(0));
         }
 
-        static Matrix Zero(int x, int y) //å»ºç«‹å…¨0çŸ©é˜µ
+        static Matrix Zero(int x, int y) //½¨Á¢È«0¾ØÕó
         {
             Matrix mat(x, y);
             mat.setZero();
             return mat;
         }
 
-        Matrix setIdentity(void)//çŸ©é˜µå•ä½åŒ–
+        Matrix setIdentity(void)//¾ØÕóµ¥Î»»¯
         {
             for (unsigned char i = 0; i < row; i++)
             {
@@ -353,7 +353,7 @@ namespace Sim_Eigen {
             return *this;
         }
 
-        static Matrix Identity(int rows, int cols)//å»ºç«‹å•ä½çŸ©é˜µ
+        static Matrix Identity(int rows, int cols)//½¨Á¢µ¥Î»¾ØÕó
         {
             Matrix r(rows, cols);
             for (unsigned char i = 0; i < rows; i++) {
@@ -369,7 +369,7 @@ namespace Sim_Eigen {
         }
 
 
-        void addIdentity(void)//è‡ªåŠ å•ä½é˜µ
+        void addIdentity(void)//×Ô¼Óµ¥Î»Õó
         {
             if (row == column)
             {
@@ -379,7 +379,7 @@ namespace Sim_Eigen {
 
         }
 
-        void Transpose(void)//çŸ©é˜µè½¬ç½®
+        void Transpose(void)//¾ØÕó×ªÖÃ
         {
             if (row == column)
             {
@@ -403,7 +403,7 @@ namespace Sim_Eigen {
 
         }
 
-        Matrix transpose(void)//è¿”å›è½¬ç½®çŸ©é˜µ
+        Matrix transpose(void)//·µ»Ø×ªÖÃ¾ØÕó
         {
             Matrix r(column, row);
             for (unsigned char i = 0; i < row; i++)
@@ -413,7 +413,7 @@ namespace Sim_Eigen {
 
         }
 
-        void Inverse()//æ±‚é€†çŸ©é˜µ
+        void Inverse()//ÇóÄæ¾ØÕó
         {
             if (row == column)
             {
@@ -436,7 +436,7 @@ namespace Sim_Eigen {
             }
         }
 
-        Matrix inverse()//è¿”å›é€†çŸ©é˜µ
+        Matrix inverse()//·µ»ØÄæ¾ØÕó
         {
             if (row == column)
             {
@@ -462,7 +462,7 @@ namespace Sim_Eigen {
         }
 
 
-        void set_Block_Matrix(Matrix& m, unsigned char r, unsigned char c)//å°†åˆ†å—çŸ©é˜µmæ”¾å…¥å¯¹åº”ä½ç½®ï¼Œm(0,0)å¯¹åº”rï¼Œc
+        void set_Block_Matrix(Matrix& m, unsigned char r, unsigned char c)//½«·Ö¿é¾ØÕóm·ÅÈë¶ÔÓ¦Î»ÖÃ£¬m(0,0)¶ÔÓ¦r£¬c
         {
             if (m.row + r <= row || m.column + c <= column)
             {
@@ -472,17 +472,17 @@ namespace Sim_Eigen {
             }
         }
 
-        // å¸¦è¾¹ç•Œæ£€æŸ¥çš„å¸¸é‡åŒ–ç‰ˆæœ¬
-        //P,Qä¸ºåˆ†å—å¤§å°
+        // ´ø±ß½ç¼ì²éµÄ³£Á¿»¯°æ±¾
+        //P,QÎª·Ö¿é´óĞ¡
         template<int P, int Q>
         Block<Scalar> block(int startRow, int startCol) {
             static_assert(P > 0 && Q > 0, "Block size must be positive");
             return block(startRow, startCol, P, Q);
         }
 
-        Block<Scalar> block(int startRow, int startCol, int blockRows, int blockCols)//å»é™¤èµ·å§‹ç‚¹ä½äºrã€cçš„hè¡Œwåˆ—ä½œä¸ºåˆ†å—çŸ©é˜µ
+        Block<Scalar> block(int startRow, int startCol, int blockRows, int blockCols)//È¥³ıÆğÊ¼µãÎ»ÓÚr¡¢cµÄhĞĞwÁĞ×÷Îª·Ö¿é¾ØÕó
         {
-            //éªŒè¯è¾“å…¥å‚æ•°æ­£ç¡®æ€§
+            //ÑéÖ¤ÊäÈë²ÎÊıÕıÈ·ĞÔ
             if (startRow < 0 || startCol < 0 ||
                 blockRows <= 0 || blockCols <= 0 ||
                 startRow + blockRows > row ||
@@ -504,7 +504,7 @@ namespace Sim_Eigen {
         }
 
 
-        float trace()//æ±‚çŸ©é˜µçš„è¿¹
+        float trace()//Çó¾ØÕóµÄ¼£
         {
             if (row != column)
                 throw std::invalid_argument("Matrix trace: Matrix row not equal column");
@@ -518,7 +518,7 @@ namespace Sim_Eigen {
 
 
     public:
-        static Matrix adjoint(Matrix& m, unsigned char r, unsigned char c)//æ±‚ä¼´éšçŸ©é˜µ
+        static Matrix adjoint(Matrix& m, unsigned char r, unsigned char c)//Çó°éËæ¾ØÕó
         {
             if (m.row == m.column && r < m.row && c < m.column)
             {
@@ -549,7 +549,7 @@ namespace Sim_Eigen {
 
 
 
-        static float determinant(Matrix& m)//æ±‚è¡Œåˆ—å¼
+        static float determinant(Matrix& m)//ÇóĞĞÁĞÊ½
         {
 
             if (m.row == m.column)
@@ -586,7 +586,7 @@ namespace Sim_Eigen {
 
     };
 
-    // å®šä¹‰ Eigen é£æ ¼çš„åˆ«å
+    // ¶¨Òå Eigen ·ç¸ñµÄ±ğÃû
     using MatrixXf = Matrix<float>;
     using MatrixXd = Matrix<double>;
 }

@@ -1,7 +1,7 @@
 /*
  * Transformer.h
  *
- *  Created on: 2023å¹´4æœˆ9æ—¥
+ *  Created on: 2023Äê4ÔÂ9ÈÕ
  *      Author: fuzic
  */
 #pragma once
@@ -25,7 +25,7 @@ class Rotation
 #define M_PI 3.14159265358979323846
 
 public:
-    static Vector3f get_cwiseProduct(const Vector3f& v,const Vector3f& vector)//å‘é‡å„ä¸ªä½ç½®ä¸Šçš„ç›¸ä¹˜
+    static Vector3f get_cwiseProduct(const Vector3f& v,const Vector3f& vector)//ÏòÁ¿¸÷¸öÎ»ÖÃÉÏµÄÏà³Ë
     {
         Vector3f r;
         r(0)=v(0)*vector(0);
@@ -33,7 +33,7 @@ public:
         r(2)=v(2)*vector(2);
         return r;
     }
-    static MatrixXf get_Asdiagonal(const Vector3f& v)//å‘é‡å˜å¯¹è§’é˜µ
+    static MatrixXf get_Asdiagonal(const Vector3f& v)//ÏòÁ¿±ä¶Ô½ÇÕó
     {
         MatrixXf r(3, 3);
         r.setZero();
@@ -42,7 +42,7 @@ public:
         r(2,2)=v(2);
         return r;
     }
-    static Vector3f matrix2euler(MatrixXf& dcm)//æ–¹å‘ä½™å¼¦é˜µè½¬æ¬§æ‹‰è§’
+    static Vector3f matrix2euler(MatrixXf& dcm)//·½ÏòÓàÏÒÕó×ªÅ·À­½Ç
     {
         Vector3f euler;
 
@@ -69,7 +69,7 @@ public:
         return euler;
     }
 
-    static MatrixXf euler2matrix(Vector3f& v)//æ¬§æ‹‰è§’è½¬æ–¹å‘ä½™å¼¦é˜µ
+    static MatrixXf euler2matrix(Vector3f& v)//Å·À­½Ç×ª·½ÏòÓàÏÒÕó
     {
         MatrixXf r(3, 3);
         r(0,0) = cos(v(2)) * cos(v(1)), r(0,1) = -sin(v(2)) * cos(v(0)) + cos(v(2)) * sin(v(1)) * sin(v(0)), r(0,2) = sin(v(2)) * sin(v(0)) + cos(v(2)) * sin(v(1)) * cos(v(0));
@@ -79,7 +79,7 @@ public:
     }
 
 
-    static Quaternionf  euler2quaternion(Vector3f& v)//æ¬§æ‹‰è§’è½¬å››å…ƒæ•°
+    static Quaternionf  euler2quaternion(Vector3f& v)//Å·À­½Ç×ªËÄÔªÊı
     {
         Quaternionf r;
 
@@ -92,7 +92,7 @@ public:
     }
 
 
-    static MatrixXf quaternion2matrix(Quaternionf& q)//æ¬§æ‹‰è§’è½¬æ–¹å‘ä½™å¼¦é˜µ
+    static MatrixXf quaternion2matrix(Quaternionf& q)//Å·À­½Ç×ª·½ÏòÓàÏÒÕó
     {
         MatrixXf r(3, 3);
         r.setZero();
@@ -104,7 +104,7 @@ public:
         return r;
     }
 
-    static Vector3f quaternion2rotvec(Quaternionf& q)//å››å…ƒæ•°è½¬ç­‰æ•ˆæ—‹è½¬çŸ¢é‡
+    static Vector3f quaternion2rotvec(Quaternionf& q)//ËÄÔªÊı×ªµÈĞ§Ğı×ªÊ¸Á¿
     {
         Vector3f r;
         if (q.w() != 0)
@@ -118,7 +118,7 @@ public:
     }
 
 
-    static Quaternionf rotvec2quaternion(Vector3f& rotvec)//ç­‰æ•ˆæ—‹è½¬çŸ¢é‡è½¬å››å…ƒæ•°
+    static Quaternionf rotvec2quaternion(Vector3f& rotvec)//µÈĞ§Ğı×ªÊ¸Á¿×ªËÄÔªÊı
     {
         Vector3f v;
         v = rotvec * 0.5;
@@ -138,7 +138,7 @@ public:
         return q;
     }
 
-    static MatrixXf get_Antisymmetric_Matrix(Vector3f& v)//å‘é‡è½¬åå¯¹ç§°çŸ©é˜µ
+    static MatrixXf get_Antisymmetric_Matrix(Vector3f& v)//ÏòÁ¿×ª·´¶Ô³Æ¾ØÕó
     {
         MatrixXf r(3, 3);
         r(0,0) = 0, r(0,1) = -v(2), r(0,2) = v(1);
@@ -147,7 +147,7 @@ public:
         return r;
     }
 
-    static MatrixXf rotvec2matrix(Vector3f& v)//ç­‰æ•ˆæ—‹è½¬çŸ¢é‡è½¬æ–¹å‘ä½™å¼¦é˜µ
+    static MatrixXf rotvec2matrix(Vector3f& v)//µÈĞ§Ğı×ªÊ¸Á¿×ª·½ÏòÓàÏÒÕó
     {
         float t = v.norm();
         
@@ -174,7 +174,7 @@ public:
 
     }
 
-    static Quaternionf matrix2quaternion(MatrixXf& m)//æ–¹å‘ä½™å¼¦é˜µè½¬å››å…ƒæ•°
+    static Quaternionf matrix2quaternion(MatrixXf& m)//·½ÏòÓàÏÒÕó×ªËÄÔªÊı
     {
         MatrixXf t(4,1);
         t(0,0) = 1 + m.trace();
@@ -211,7 +211,7 @@ public:
 
     }
 
-    static Vector3f matrix2vector3d(MatrixXf &m)//3*1åˆ—å‘é‡è½¬å‘é‡æè¿°
+    static Vector3f matrix2vector3d(MatrixXf &m)//3*1ÁĞÏòÁ¿×ªÏòÁ¿ÃèÊö
     {
         if((m.cols()==3 && m.rows()==1)||(m.rows()==3 && m.cols()==1))
         {
@@ -226,7 +226,7 @@ public:
         return r;
     }
 
-    static MatrixXf vectorcrossmatrix(Vector3f &v)//æ±‚åå¯¹ç§°çŸ©é˜µ
+    static MatrixXf vectorcrossmatrix(Vector3f &v)//Çó·´¶Ô³Æ¾ØÕó
     {
         MatrixXf m(3,3);
         m.setZero();
@@ -237,19 +237,19 @@ public:
         return m;
     }
 
-    static float deg2rad(float t)//Â°è½¬å¼§åº¦åˆ¶
+    static float deg2rad(float t)//¡ã×ª»¡¶ÈÖÆ
     {
         return  (t / 180)*M_PI;
 
     }
 
 
-    static float rad2deg(float t)//å¼§åº¦åˆ¶è½¬è§’åº¦
+    static float rad2deg(float t)//»¡¶ÈÖÆ×ª½Ç¶È
     {
         return t * 180 / M_PI;
     }
 
-    static float get_g(float t)//è®¡ç®—é‡åŠ›åŠ é€Ÿåº¦ä¸æ—¶é—´é—´éš”çš„ä¹˜ç§¯
+    static float get_g(float t)//¼ÆËãÖØÁ¦¼ÓËÙ¶ÈÓëÊ±¼ä¼ä¸ôµÄ³Ë»ı
     {
         return 9.7803267715 * t;
     }

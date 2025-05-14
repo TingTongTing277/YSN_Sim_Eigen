@@ -1,7 +1,7 @@
 /*
  * Vector.h
  *
- *  Created on: 2023å¹´4æœˆ9æ—¥
+ *  Created on: 2023Äê4ÔÂ9ÈÕ
  *      Author: fuzic
  */
 #pragma once
@@ -20,13 +20,13 @@ namespace Sim_Eigen {
        Scalar v[3];
     public:
         Vector3() {
-            // é€šè¿‡ this-> è®¿é—®åŸºç±»æˆå‘˜ï¼ˆé¿å…æ¨¡æ¿ä¾èµ–é—®é¢˜ï¼‰
+            // Í¨¹ı this-> ·ÃÎÊ»ùÀà³ÉÔ±£¨±ÜÃâÄ£°åÒÀÀµÎÊÌâ£©
             this->v[0] = 0;
             this->v[1] = 0;
             this->v[2] = 0;
         }
         Vector3(Scalar x, Scalar y, Scalar z) {
-            // é€šè¿‡ this-> è®¿é—®åŸºç±»æˆå‘˜ï¼ˆé¿å…æ¨¡æ¿ä¾èµ–é—®é¢˜ï¼‰
+            // Í¨¹ı this-> ·ÃÎÊ»ùÀà³ÉÔ±£¨±ÜÃâÄ£°åÒÀÀµÎÊÌâ£©
             this->v[0] = x;
             this->v[1] = y;
             this->v[2] = z;
@@ -39,7 +39,7 @@ namespace Sim_Eigen {
 
         ~Vector3() {};
 
-        // Eigenå…¼å®¹æ¥å£
+        // Eigen¼æÈİ½Ó¿Ú
         static constexpr int SizeAtCompileTime = 3;
         using ScalarType = Scalar;
 
@@ -73,7 +73,7 @@ namespace Sim_Eigen {
 
     public:
 
-        // å…ƒç´ è®¿é—®
+        // ÔªËØ·ÃÎÊ
         inline Scalar& operator()(int index) {
             if (index < 0 || index >= 3)
                 throw std::out_of_range("Vector3 index out of range");
@@ -86,7 +86,7 @@ namespace Sim_Eigen {
             return v[index];
         }
 
-        // å…ƒç´ è®¿é—®
+        // ÔªËØ·ÃÎÊ
         inline Scalar& operator[](int index) {
             if (index < 0 || index >= 3)
                 throw std::out_of_range("Vector3 index out of range");
@@ -114,7 +114,7 @@ namespace Sim_Eigen {
             return*this;
         }
 
-        Vector3 operator = (const Matrix<Scalar>& m)//å‘é‡èµ‹å€¼
+        Vector3 operator = (const Matrix<Scalar>& m)//ÏòÁ¿¸³Öµ
         {
             if(m.rows() != 3 || m.cols() != 1)
                 throw std::runtime_error("Matrix size is not equal vector size");
@@ -124,19 +124,19 @@ namespace Sim_Eigen {
             return *this;
         }
         
-        //æ˜¾å¼å®šä¹‰æ‹·è´èµ‹å€¼è¿ç®—ç¬¦
-        Vector3& operator = (const Vector3& vector)//å‘é‡èµ‹å€¼
+        //ÏÔÊ½¶¨Òå¿½±´¸³ÖµÔËËã·û
+        Vector3& operator = (const Vector3& vector)//ÏòÁ¿¸³Öµ
         {
-            (*this)(0) = vector(0); (*this)(1) = vector(1); (*this)(2) = vector(2);// è°ƒç”¨åŸºç±»æ·±æ‹·è´
+            (*this)(0) = vector(0); (*this)(1) = vector(1); (*this)(2) = vector(2);// µ÷ÓÃ»ùÀàÉî¿½±´
             return *this;
         }
-        // æ˜¾å¼å®šä¹‰ç§»åŠ¨èµ‹å€¼è¿ç®—ç¬¦ï¼ˆå¯é€‰ï¼‰
+        // ÏÔÊ½¶¨ÒåÒÆ¶¯¸³ÖµÔËËã·û£¨¿ÉÑ¡£©
         Vector3& operator = (Vector3&& vector) noexcept {
             (*this)(0) = vector(0); (*this)(1) = vector(1); (*this)(2) = vector(2);
             return *this;
         }
         
-        Vector3 operator + (const Vector3& vector) const//å‘é‡ç›¸åŠ 
+        Vector3 operator + (const Vector3& vector) const//ÏòÁ¿Ïà¼Ó
         {
             Vector3 r;
             r.v[0] = vector.v[0] + v[0];
@@ -145,7 +145,7 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Vector3 operator +=(const Vector3& vector)//å‘é‡è‡ªåŠ 
+        Vector3 operator +=(const Vector3& vector)//ÏòÁ¿×Ô¼Ó
         {
             this->v[0] += vector.v[0];
             this->v[1] += vector.v[1];
@@ -154,7 +154,7 @@ namespace Sim_Eigen {
         }
 
 
-        Vector3 operator - (const Vector3& vector) const//å‘é‡ç›¸å‡
+        Vector3 operator - (const Vector3& vector) const//ÏòÁ¿Ïà¼õ
         {
             Vector3 r;
             r.v[0] = this->v[0] - vector.v[0];
@@ -163,7 +163,7 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Vector3 operator - () const//å‘é‡ç›¸å
+        Vector3 operator - () const//ÏòÁ¿Ïà·´
         {
             Vector3 r;
             r.v[0] = -(this->v[0]);
@@ -173,7 +173,7 @@ namespace Sim_Eigen {
 
         }
         
-        Vector3 operator -= (const Vector3& vector)//å‘é‡è‡ªå‡
+        Vector3 operator -= (const Vector3& vector)//ÏòÁ¿×Ô¼õ
         {
             this->v[0] -= vector.v[0];
             this->v[1] -= vector.v[1];
@@ -182,12 +182,12 @@ namespace Sim_Eigen {
         }
 
         /*
-        Scalar  operator * (const Vector3& vector) const//ç‚¹ä¹˜
+        Scalar  operator * (const Vector3& vector) const//µã³Ë
         {
             Scalar r = v[0] * vector(0) + v[1] * vector(1) + v[2] * vector(2);
             return r;
         }*/
-        Vector3 operator * (const Scalar& n) const //å‘é‡æ•°ä¹˜
+        Vector3 operator * (const Scalar& n) const //ÏòÁ¿Êı³Ë
         {
             Vector3 r((*this)(0) * n, (*this)(1) * n, (*this)(2) * n);
             return r;
@@ -202,7 +202,7 @@ namespace Sim_Eigen {
         }
         
     public:
-        Scalar norm(void)//å–æ¨¡
+        Scalar norm(void)//È¡Ä£
         {
             Scalar r = sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
             return r;
@@ -212,7 +212,7 @@ namespace Sim_Eigen {
             return v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
         }
 
-        void normalize(void)//æ ‡å‡†åŒ–
+        void normalize(void)//±ê×¼»¯
         {
             Scalar t = this->norm();
             if (t != 0)
@@ -225,7 +225,7 @@ namespace Sim_Eigen {
                 throw std::runtime_error("Cannot normalize zero vector");
         }
 
-        Vector3 normalized(void)//è¿”å›æ ‡å‡†åŒ–ï¼ˆä¸æ”¹å˜åŸå€¼ï¼‰
+        Vector3 normalized(void)//·µ»Ø±ê×¼»¯£¨²»¸Ä±äÔ­Öµ£©
         {
             Vector3 r;
             Scalar t = this->norm();
@@ -241,13 +241,13 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Scalar dot(const Vector3& vector)//ç‚¹ä¹˜
+        Scalar dot(const Vector3& vector)//µã³Ë
         {
             Scalar r = (*this)(0) * vector(0) + (*this)(1) * vector(1) + (*this)(2) * vector(2);
             return r;
         }
 
-        Vector3 cross(const Vector3& vector)//å‰ä¹˜
+        Vector3 cross(const Vector3& vector)//²æ³Ë
         {
             Vector3 r;
             r(0) = (*this)(1) * vector(2) - (*this)(2) * vector(1);
@@ -256,7 +256,7 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Vector3 get_cwiseInverse()//å„ä¸ªä½ç½®ä¸Šçš„å€’æ•°
+        Vector3 get_cwiseInverse()//¸÷¸öÎ»ÖÃÉÏµÄµ¹Êı
         {
             Vector3 r;
             r(0) = 1 / (*this)(0);
@@ -267,7 +267,7 @@ namespace Sim_Eigen {
 
         }
 
-        Vector3 cwiseProduct(const Vector3& vector)//å„ä¸ªä½ç½®ä¸Šçš„ç›¸ä¹˜
+        Vector3 cwiseProduct(const Vector3& vector)//¸÷¸öÎ»ÖÃÉÏµÄÏà³Ë
         {
             Vector3 r;
             r(0) = (*this)(0) * vector(0);
@@ -276,11 +276,11 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Vector3 cwiseQuotient(const Vector3& other) const {//å„ä¸ªä½ç½®ä¸Šçš„ç›¸é™¤
+        Vector3 cwiseQuotient(const Vector3& other) const {//¸÷¸öÎ»ÖÃÉÏµÄÏà³ı
             return Vector3((*this)(0) / other(0), (*this)(1) / other(1), (*this)(2) / other(2));
         }
 
-        Matrix<Scalar> get_Asdiagonal(void)//å‘é‡å˜å¯¹è§’é˜µ
+        Matrix<Scalar> get_Asdiagonal(void)//ÏòÁ¿±ä¶Ô½ÇÕó
         {
             Matrix<Scalar> r(3, 3);
             r(0, 0) = (*this)(0);
@@ -289,7 +289,7 @@ namespace Sim_Eigen {
             return r;
         }
 
-        Matrix<Scalar> get_Antisymmetric_Matrix(void)//æ±‚åå¯¹ç§°çŸ©é˜µ
+        Matrix<Scalar> get_Antisymmetric_Matrix(void)//Çó·´¶Ô³Æ¾ØÕó
         {
             Matrix<Scalar> r(3, 3);
             r(0, 0) = 0, r(0, 1) = -(*this)(2), r(0, 2) = (*this)(1);
@@ -300,13 +300,13 @@ namespace Sim_Eigen {
 
 
 
-        void setZero(void)//æ¸…0
+        void setZero(void)//Çå0
         {
             (*this)(0) = 0;
             (*this)(1) = 0;
             (*this)(2) = 0;
         }
-        void setOnes(void)//å˜1ï¼ˆå…¨å…ƒç´ ï¼‰
+        void setOnes(void)//±ä1£¨È«ÔªËØ£©
         {
             (*this)(0) = 1;
             (*this)(1) = 1;
@@ -314,14 +314,14 @@ namespace Sim_Eigen {
         }
 
 
-        Matrix<Scalar> toRowVector(void) const//è½¬çŸ©é˜µè¡Œå‘é‡
+        Matrix<Scalar> toRowVector(void) const//×ª¾ØÕóĞĞÏòÁ¿
         {
             Matrix<Scalar> r(1, 3);
             r(0, 0) = (*this)(0), r(0, 1) = (*this)(1), r(0, 2) = (*this)(2);
             return r;
         }
 
-        Matrix<Scalar> toColVector(void) const//è½¬çŸ©é˜µåˆ—å‘é‡
+        Matrix<Scalar> toColVector(void) const//×ª¾ØÕóÁĞÏòÁ¿
         {
             Matrix<Scalar> r(3, 1);
             r(0, 0) = (*this)(0), r(1, 0) = (*this)(1), r(2, 0) = (*this)(2);
@@ -329,34 +329,34 @@ namespace Sim_Eigen {
 
         }
 
-        // æµå¼åˆå§‹åŒ–ï¼ˆéœ€è¦Matrix.hå·²å®ç°é€—å·åˆå§‹åŒ–ï¼‰
+        // Á÷Ê½³õÊ¼»¯£¨ĞèÒªMatrix.hÒÑÊµÏÖ¶ººÅ³õÊ¼»¯£©
         CommaInitializer<Vector3<Scalar>, Scalar> operator<<(Scalar value) {
             return CommaInitializer<Vector3<Scalar>, Scalar>(*this, value);
         }
 
-        // æ·»åŠ å‹å…ƒå£°æ˜
+        // Ìí¼ÓÓÑÔªÉùÃ÷
         friend std::ostream& operator<<(std::ostream& os, const Vector3<Scalar>& vector) {
-            // ä¿å­˜åŸæœ‰æ ¼å¼çŠ¶æ€
+            // ±£´æÔ­ÓĞ¸ñÊ½×´Ì¬
             std::ios_base::fmtflags origFlags = os.flags();
             std::streamsize origPrecision = os.precision();
             std::streamsize origWidth = os.width();
 
-            // è®¾ç½®è¾“å‡ºæ ¼å¼ï¼ˆç¤ºä¾‹ï¼šå›ºå®šå°æ•°ç‚¹ï¼Œ4ä½ç²¾åº¦ï¼‰
+            // ÉèÖÃÊä³ö¸ñÊ½£¨Ê¾Àı£º¹Ì¶¨Ğ¡Êıµã£¬4Î»¾«¶È£©
             os << std::fixed << std::setprecision(4);
 
             for (int i = 0; i < 3; ++i) {
                 os << vector(i);
-                os << std::endl;  // è¡Œæœ«æ¢è¡Œ
+                os << std::endl;  // ĞĞÄ©»»ĞĞ
             }
 
-            // æ¢å¤åŸæœ‰æ ¼å¼
+            // »Ö¸´Ô­ÓĞ¸ñÊ½
             os.flags(origFlags);
             os.precision(origPrecision);
             os.width(origWidth);
             return os;
         }
 
-        // ç‰¹æ®Šæ“ä½œ
+        // ÌØÊâ²Ù×÷
         static Vector3 Zero() { return Vector3(0, 0, 0); }
         static Vector3 Ones() { return Vector3(1, 1, 1); }
         static Vector3 UnitX() { return Vector3(1, 0, 0); }

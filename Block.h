@@ -11,8 +11,8 @@ namespace Sim_Eigen {
 	private:
 		int rows_;
 		int cols_;
-		std::vector<Scalar*> block_;  // ç”¨ vector ç®¡ç†æŒ‡é’ˆæ•°ç»„
-		Matrix<Scalar>* parent; //æŒ‡å‘åŸå§‹çŸ©é˜µ
+		std::vector<Scalar*> block_;  // ÓÃ vector ¹ÜÀíÖ¸ÕëÊı×é
+		Matrix<Scalar>* parent; //Ö¸ÏòÔ­Ê¼¾ØÕó
 	public:
 		Block(Matrix<Scalar>& m,int startRow,int startCol, int Rows, int Cols) {
 			if(startRow<0 || startCol<0 || Rows<0 || Cols<0 || startRow+Rows>m.rows() || startCol+Cols>m.cols())
@@ -30,7 +30,7 @@ namespace Sim_Eigen {
 		int rows() const { return rows_; }
 		int cols() const { return cols_; }
 		Scalar** data() { return block_; }
-		Matrix<Scalar>* getParent() const { return parent; }//è·å–åŸå§‹çŸ©é˜µä½ç½®
+		Matrix<Scalar>* getParent() const { return parent; }//»ñÈ¡Ô­Ê¼¾ØÕóÎ»ÖÃ
 		const Scalar** data() const { return block_; }
 
 		Scalar& operator()(int rows, int cols) {
@@ -47,7 +47,7 @@ namespace Sim_Eigen {
 			return block_[rows] [cols];
 		}
 
-		//åˆ†å—çŸ©é˜µmæ”¾å›æ¯çŸ©é˜µåŸä½ç½®
+		//·Ö¿é¾ØÕóm·Å»ØÄ¸¾ØÕóÔ­Î»ÖÃ
 		Block<Scalar>& operator = (const Matrix<Scalar>& m) {
 			if (rows_ != m.rows() || cols_ != m.cols())
 				throw std::invalid_argument("Matrix and Block size is not same!");
@@ -58,7 +58,7 @@ namespace Sim_Eigen {
 			return *this;
 		}
 
-		//Blockè½¬åŒ–ä¸ºçŸ©é˜µè¾“å‡º
+		//Block×ª»¯Îª¾ØÕóÊä³ö
 		Matrix<Scalar> toMatrix(void) {
 			Matrix<Scalar> m(rows_, cols_);
 			m = *this;

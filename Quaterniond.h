@@ -1,7 +1,7 @@
 /*
  * Quaterniond.h
  *
- *  Created on: 2023å¹´4æœˆ9æ—¥
+ *  Created on: 2023Äê4ÔÂ9ÈÕ
  *      Author: fuzic
  */
 #pragma once
@@ -216,7 +216,7 @@ namespace Sim_Eigen {
 
     };
 
-    // å®šä¹‰ Eigen é£æ ¼çš„åˆ«å
+    // ¶¨Òå Eigen ·ç¸ñµÄ±ğÃû
     using Quaternionf = Quaternion<float>;
     using Quaterniond = Quaternion<double>;
 

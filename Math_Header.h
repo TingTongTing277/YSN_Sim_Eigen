@@ -1,7 +1,7 @@
 /*
  * My_Math.h
  *
- *  Created on: 2023å¹´9æœˆ21æ—¥
+ *  Created on: 2023Äê9ÔÂ21ÈÕ
  *      Author: 666
  */
 #pragma once

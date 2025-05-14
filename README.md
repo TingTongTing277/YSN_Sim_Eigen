@@ -1,12 +1,12 @@
 # Sim_Eigen
 
-## é¡¹ç›®ä»‹ç»
-è¿™æ˜¯ä¸€ä¸ªç®€å•çš„çŸ©é˜µç®—æ³•åº“ï¼ŒåŒ…å«äº†çŸ©é˜µï¼Œä¸‰ç»´å‘é‡ï¼Œå››å…ƒæ•°ï¼Œä½¿ç”¨æ ‡å‡†C++ç¼–å†™ï¼Œ
-ä¸»è¦ç”¨äºŽä¸€äº›è¾ƒå·®çš„MCUç¼–è¯‘å™¨çŽ¯å¢ƒå¿«é€ŸéªŒè¯ç®—æ³•ã€‚
-## éœ€æ±‚çŽ¯å¢ƒ
-æ ‡å‡†C++çŽ¯å¢ƒï¼Œæ”¯æŒiostreamå’Œstdexcept
-##ä½¿ç”¨æ–¹æ³•
-ä½ å¯ä»¥åƒä½¿ç”¨Eigenä¸€æ ·ä½¿ç”¨å®ƒï¼Œæ¯”å¦‚ï¼š
+## ÏîÄ¿½éÉÜ
+ÕâÊÇÒ»¸ö¼òµ¥µÄ¾ØÕóËã·¨¿â£¬°üº¬ÁË¾ØÕó£¬ÈýÎ¬ÏòÁ¿£¬ËÄÔªÊý£¬Ê¹ÓÃ±ê×¼C++±àÐ´£¬
+Ö÷ÒªÓÃÓÚÒ»Ð©½Ï²îµÄMCU±àÒëÆ÷»·¾³¿ìËÙÑéÖ¤Ëã·¨¡£
+## ÐèÇó»·¾³
+±ê×¼C++»·¾³£¬Ö§³ÖiostreamºÍstdexcept
+##Ê¹ÓÃ·½·¨
+Äã¿ÉÒÔÏñÊ¹ÓÃEigenÒ»ÑùÊ¹ÓÃËü£¬±ÈÈç£º
 ```cpp
 #include <iostream>
 #include "Math_Header.h"
@@ -17,20 +17,20 @@ m << 1,2,3,
 std::cout << m << std::endl;
 ```
 
-## ç›®å½•ç»“æž„æè¿°
-â”œâ”€â”€ ReadMe.md           // å¸®åŠ©æ–‡æ¡£
+## Ä¿Â¼½á¹¹ÃèÊö
+©À©¤©¤ ReadMe.md           // °ïÖúÎÄµµ
 
-â”œâ”€â”€ Block.h              	// åˆ†å—çŸ©é˜µç±»
+©À©¤©¤ Block.h              	// ·Ö¿é¾ØÕóÀà
 
-â”œâ”€â”€ Matrix.h           	// çŸ©é˜µç±»å®žçŽ°
+©À©¤©¤ Matrix.h           	// ¾ØÕóÀàÊµÏÖ
 
-â”œâ”€â”€ Vector.h           	// å‘é‡ç±»å®žçŽ°
+©À©¤©¤ Vector.h           	// ÏòÁ¿ÀàÊµÏÖ
 
-â”œâ”€â”€ Quaterniond.h     	// å››å…ƒæ•°ç±»å®žçŽ°
+©À©¤©¤ Quaterniond.h     	// ËÄÔªÊýÀàÊµÏÖ
 
-â”œâ”€â”€ Transformer.h     	// å§¿æ€ç›¸äº’å˜æ¢
+©À©¤©¤ Transformer.h     	// ×ËÌ¬Ïà»¥±ä»»
 
-â”œâ”€â”€ Math_Header.h     // åº“å¤´æ–‡ä»¶
+©À©¤©¤ Math_Header.h     // ¿âÍ·ÎÄ¼þ
 
-## ç‰ˆæœ¬å†…å®¹æ›´æ–°
-V1.0.0: ç¬¬ä¸€æ¬¡æ›´æ–° 2025.5.12
+## °æ±¾ÄÚÈÝ¸üÐÂ
+V1.0.0: µÚÒ»´Î¸üÐÂ 2025.5.12
