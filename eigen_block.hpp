@@ -2,8 +2,9 @@
 #ifndef MATH_BLOCK_H_
 #define MATH_BLOCK_H_
 
-#include "Matrix.h"
 #include <vector>
+
+#include "eigen_matrix.hpp"
 
 namespace Sim_Eigen {
 	template<typename Scalar>

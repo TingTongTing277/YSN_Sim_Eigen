@@ -9,7 +9,7 @@
 #define IMU_QUATERNIOND_H_
 
 
-#include "Vector.h"
+#include "eigen_vector.h"
 
 namespace Sim_Eigen {
     template<typename Scalar>

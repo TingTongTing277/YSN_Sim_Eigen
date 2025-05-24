@@ -4,7 +4,8 @@
  *  Created on: 2023Äê4ÔÂ9ÈÕ
  *      Author: fuzic
  */
-#pragma once
+
+
 #ifndef MATH_MATRIX_H_
 #define MATH_MATRIX_H_
 

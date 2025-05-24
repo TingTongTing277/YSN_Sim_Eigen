@@ -13,7 +13,7 @@
 #include "eigen3/Eigen/Core"
 using namespace Eigen;
 #else
-#include "Quaterniond.h"
+#include "eigen_quaternion.h"
 using namespace Sim_Eigen;
 #endif // Eigen
 

@@ -8,7 +8,7 @@
 #ifndef IMU_VECTOR_H_
 #define IMU_VECTOR_H_
 
-#include "Matrix.h"
+#include "eigen_matrix.hpp"
 
 namespace Sim_Eigen {
     template <typename Scalar>
